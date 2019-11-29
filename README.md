@@ -78,15 +78,30 @@ Open geoserver: http://localhost:18080/geoserver
 
 Mount existing geoserver data directory from host: 
 
-    docker run --name my-geoserver -v $PWD/data:/opt/geoserver_data/  -p 18080:8080  -d dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
+    docker run --name my-geoserver -v \
+	 $PWD/data:/opt/geoserver_data/  \
+	 -p 18080:8080  -d dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
+
+nano tomcat/conf/dev/context.xml 
+
+
 
 Storing data on the host rather than the container:
 
     TODO
 
-Replace context.xml for JNDI:
+Mont data directory and replace the   context.xml file  for JNDI:
 
-    TODO
+     docker run --name my-geoserver  \
+	     -v $PWD/data:/opt/geoserver_data/  \
+         -v $PWD/tomcat/conf/dev/context.xml:/opt/tomcat/conf/context.xml  \
+	     -p 18080:8080  -d dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
+
+
+tomcat/conf/dev/context.xml
+
+/opt/tomcat/conf/context.xml 
+
 
 Override JVM Options:
 
