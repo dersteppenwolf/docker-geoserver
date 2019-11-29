@@ -98,11 +98,6 @@ Mont data directory and replace the   context.xml file  for JNDI:
 	     -p 18080:8080  -d dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
 
 
-tomcat/conf/dev/context.xml
-
-/opt/tomcat/conf/context.xml 
-
-
 Override JVM Options:
 
     TODO
