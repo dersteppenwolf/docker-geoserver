@@ -5,7 +5,7 @@ Alpine based docker image for geoserver using Tomcat 9.x,  Gdal 3.x and OpenJDK 
 
 ## Supported tags
 
-* `2.16.0_tomcat_9.0.27_v1.0.0`,  `latest`
+* `2.16.01_tomcat_9.0.29_v1.0.0`, `2.16.0_tomcat_9.0.27_v1.0.0`,  `latest`
 
 ## Description
 
@@ -57,14 +57,14 @@ Pull image:
 
 Execute image:
 
-    docker run -p 18080:8080 dersteppen/docker-geoserver:2.16.0_tomcat_9.0.27_v1.0.0
+    docker run -p 18080:8080 dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
 
 Execute in detached mode:
 
     # delete previous image
     docker rm -f my-geoserver
 
-    docker run --name my-geoserver   -p 18080:8080  -d dersteppen/docker-geoserver:2.16.0_tomcat_9.0.27_v1.0.0
+    docker run --name my-geoserver   -p 18080:8080  -d dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
 
     # fetch some  some logs...
     docker logs -f my-geoserver 
@@ -78,7 +78,7 @@ Open geoserver: http://localhost:18080/geoserver
 
 Mount existing geoserver data directory from host: 
 
-    sudo docker run --name my-geoserver -v $HOME/geoserver_data:/opt/geoserver_data/  -p 18080:8080  -d dersteppen/docker-geoserver:2.16.0_tomcat_9.0.27_v1.0.0
+    docker run --name my-geoserver -v $PWD/data:/opt/geoserver_data/  -p 18080:8080  -d dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
 
 Storing data on the host rather than the container:
 
@@ -101,12 +101,12 @@ Build:
 ```bash
 docker build -t dersteppen/docker-geoserver .
 docker images dersteppen/docker-geoserver
-docker tag xxxx dersteppen/docker-geoserver:2.16.0_tomcat_9.0.27_v1.0.0
+docker tag 5ea254ff3773 dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
 ```
 
 Push image to dockerhub:
 
-    docker push dersteppen/docker-geoserver:2.16.0_tomcat_9.0.27_v1.0.0
+    docker push dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
 
 ## Related images
 

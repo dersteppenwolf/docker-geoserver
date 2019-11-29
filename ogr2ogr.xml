@@ -1,10 +1,14 @@
 <OgrConfiguration>
-
   <ogr2ogrLocation>/usr/bin/ogr2ogr</ogr2ogrLocation>
-
   <!-- <gdalData>...</gdalData> -->
-
   <formats>
+   <Format> 
+      <ogrFormat>GPKG</ogrFormat>
+      <formatName>OGR-GPKG</formatName>
+      <fileExtension>.gpkg</fileExtension>
+      <singleFile>true</singleFile>
+      <mimeType>application/geopackage+sqlite3</mimeType>
+    </Format>
     <Format>
       <ogrFormat>MapInfo File</ogrFormat>
       <formatName>OGR-TAB</formatName>
@@ -32,13 +36,7 @@
       <mimeType>application/vnd.google-earth.kml</mimeType>
     </Format>
 
-    <Format>
-      <ogrFormat>GPKG</ogrFormat>
-      <formatName>OGR-GPKG</formatName>
-      <fileExtension>.gpkg</fileExtension>
-      <singleFile>true</singleFile>
-      <mimeType>application/geopackage+sqlite3</mimeType>
-    </Format>
+   
 
 
   </formats>
