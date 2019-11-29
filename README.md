@@ -5,7 +5,7 @@ Alpine based docker image for geoserver using Tomcat 9.x,  Gdal 3.x and OpenJDK 
 
 ## Supported tags
 
-* `2.16.01_tomcat_9.0.29_v1.0.0`, `2.16.0_tomcat_9.0.27_v1.0.0`,  `latest`
+* `2.16.1_tomcat_9.0.29_v1.0.0`, `2.16.0_tomcat_9.0.27_v1.0.0`,  `latest`
 
 ## Description
 
@@ -101,7 +101,7 @@ Build:
 ```bash
 docker build -t dersteppen/docker-geoserver .
 docker images dersteppen/docker-geoserver
-docker tag 5ea254ff3773 dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
+docker tag cf1275179651 dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
 ```
 
 Push image to dockerhub:
