@@ -29,17 +29,20 @@ Alpine based docker image for geoserver using Tomcat 9.x,  Gdal 3.x and OpenJDK 
 Official: 
 
 * CSS https://docs.geoserver.org/latest/en/user/styling/css/index.html
+* Ysld https://docs.geoserver.org/stable/en/user/styling/ysld/index.html
+* Mbstyle  https://docs.geoserver.org/latest/en/user/styling/mbstyle/index.html
 * Image Mosaic JDBC https://docs.geoserver.org/latest/en/user/data/raster/imagemosaicjdbc.html
 * OGR based WFS Output Format (https://docs.geoserver.org/stable/en/user/extensions/ogr.html)
 * OGR WPS https://docs.geoserver.org/stable/en/user/extensions/ogr.html#ogr-based-wps-output-format
 * Vector tiles https://docs.geoserver.org/latest/en/user/extensions/vectortiles/index.html
 * WPS https://docs.geoserver.org/latest/en/user/services/wps/index.html
-* Ysld https://docs.geoserver.org/stable/en/user/styling/ysld/index.html
+
 
 
 Community:
 
 * Geopackage  https://docs.geoserver.org/stable/en/user/community/geopkg/index.html
+* Geostyler  https://docs.geoserver.org/latest/en/user/community/geostyler/index.html
 
 
 TODO:
