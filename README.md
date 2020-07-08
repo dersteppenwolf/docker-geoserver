@@ -5,7 +5,9 @@ Alpine based docker image for geoserver using Tomcat 9.x,  Gdal 3.x and OpenJDK 
 
 ## Supported tags
 
-* `2.16.1_tomcat_9.0.29_v1.0.0`, `2.16.0_tomcat_9.0.27_v1.0.0`,  `latest`
+* `2.17.1_tomcat_9.0.37_v1.0.0`,  `latest`
+* `2.16.1_tomcat_9.0.29_v1.0.0`
+* `2.16.0_tomcat_9.0.27_v1.0.0`
 
 ## Description
 
@@ -57,14 +59,14 @@ Pull image:
 
 Execute image:
 
-    docker run -p 18080:8080 dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
+    docker run -p 18080:8080 dersteppen/docker-geoserver:2.17.1_tomcat_9.0.37_v1.0.0
 
 Execute in detached mode:
 
     # delete previous image
     docker rm -f my-geoserver
 
-    docker run --name my-geoserver   -p 18080:8080  -d dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
+    docker run --name my-geoserver   -p 18080:8080  -d dersteppen/docker-geoserver:2.17.1_tomcat_9.0.37_v1.0.0
 
     # fetch some  some logs...
     docker logs -f my-geoserver 
@@ -80,7 +82,7 @@ Mount existing geoserver data directory from host:
 
     docker run --name my-geoserver -v \
 	 $PWD/data:/opt/geoserver_data/  \
-	 -p 18080:8080  -d dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
+	 -p 18080:8080  -d dersteppen/docker-geoserver:2.17.1_tomcat_9.0.37_v1.0.0
 
 nano tomcat/conf/dev/context.xml 
 
@@ -95,7 +97,7 @@ Mont data directory and replace the   context.xml file  for JNDI:
      docker run --name my-geoserver  \
 	     -v $PWD/data:/opt/geoserver_data/  \
          -v $PWD/tomcat/conf/dev/context.xml:/opt/tomcat/conf/context.xml  \
-	     -p 18080:8080  -d dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
+	     -p 18080:8080  -d dersteppen/docker-geoserver:2.17.1_tomcat_9.0.37_v1.0.0
 
 
 Override JVM Options:
@@ -111,12 +113,12 @@ Build:
 ```bash
 docker build -t dersteppen/docker-geoserver .
 docker images dersteppen/docker-geoserver
-docker tag cf1275179651 dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
+docker tag 2cd93cf9f703 dersteppen/docker-geoserver:2.17.1_tomcat_9.0.37_v1.0.0
 ```
 
 Push image to dockerhub:
 
-    docker push dersteppen/docker-geoserver:2.16.1_tomcat_9.0.29_v1.0.0
+    docker push dersteppen/docker-geoserver:2.17.1_tomcat_9.0.37_v1.0.0
 
 ## Related images
 

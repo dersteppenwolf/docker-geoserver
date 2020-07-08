@@ -1,10 +1,10 @@
-FROM dersteppen/docker-gdal-openjdk:gdal_3.0.2_java_11.0.5
+FROM dersteppen/docker-gdal-openjdk:gdal_3.1.2_java_11.0.5
 LABEL maintainer="juan@gkudos.com"
 
 ###########################################################################################################
-ARG GS_MINOR_VERSION=2.16
-ARG GS_VERSION=2.16.1
-ARG PG_JDBC_JAR_NAME=postgresql-42.2.8.jar
+ARG GS_MINOR_VERSION=2.17
+ARG GS_VERSION=2.17.1
+ARG PG_JDBC_JAR_NAME=postgresql-42.2.14.jar
 ARG OLD_PG_JDBC_JAR_NAME=postgresql-42.2.5.jar
 ARG GITLAB_GEOSERVER_DATA=./build/geoserver_data
 
@@ -13,11 +13,11 @@ ENV  DB_ENVIRONMENT=dev
 
 # Environment variables tomcat
 ENV TOMCAT_MAJOR=9 \
-    TOMCAT_VERSION=9.0.29 \
+    TOMCAT_VERSION=9.0.37 \
     CATALINA_HOME=/opt/tomcat \
     GEOSERVER_VERSION=$GS_VERSION \
-    MARLIN_TAG=0_9_3 \
-    MARLIN_VERSION=0.9.3 \
+    MARLIN_TAG=0_9_4_3 \
+    MARLIN_VERSION=0.9.4.3 \
     GEOSERVER_DATA_DIR=/opt/geoserver_data/ \
     GEOSERVER_LIB_DIR=$CATALINA_HOME/webapps/geoserver/WEB-INF/lib/
 
@@ -99,7 +99,7 @@ ARG EXT_NAME=css
 ARG EXT_ZIP_NAME=geoserver-$GEOSERVER_VERSION-$EXT_NAME-plugin.zip
 
 RUN curl --retry 10 -jkSL -o $EXT_ZIP_NAME https://sourceforge.net/projects/geoserver/files/GeoServer/$GEOSERVER_VERSION/extensions/$EXT_ZIP_NAME    &&  \
-    unzip ./$EXT_ZIP_NAME -d  $EXTENSIONS_PATH && \
+    unzip -o  ./$EXT_ZIP_NAME -d  $EXTENSIONS_PATH && \
     mv $EXTENSIONS_PATH*.jar $CATALINA_HOME/webapps/geoserver/WEB-INF/lib/ 
 
 # Ysld https://docs.geoserver.org/stable/en/user/styling/ysld/index.html
@@ -107,7 +107,15 @@ ARG EXT_NAME=ysld
 ARG EXT_ZIP_NAME=geoserver-$GEOSERVER_VERSION-$EXT_NAME-plugin.zip
 
 RUN curl --retry 10 -jkSL -o $EXT_ZIP_NAME https://sourceforge.net/projects/geoserver/files/GeoServer/$GEOSERVER_VERSION/extensions/$EXT_ZIP_NAME    &&  \
-    unzip ./$EXT_ZIP_NAME -d  $EXTENSIONS_PATH && \
+    unzip -o ./$EXT_ZIP_NAME -d  $EXTENSIONS_PATH && \
+    mv $EXTENSIONS_PATH*.jar $CATALINA_HOME/webapps/geoserver/WEB-INF/lib/ 
+
+# mbstyle  https://docs.geoserver.org/latest/en/user/styling/mbstyle/index.html
+ARG EXT_NAME=mbstyle
+ARG EXT_ZIP_NAME=geoserver-$GEOSERVER_VERSION-$EXT_NAME-plugin.zip
+
+RUN curl --retry 10 -jkSL -o $EXT_ZIP_NAME https://sourceforge.net/projects/geoserver/files/GeoServer/$GEOSERVER_VERSION/extensions/$EXT_ZIP_NAME    &&  \
+    unzip -o ./$EXT_ZIP_NAME -d  $EXTENSIONS_PATH && \
     mv $EXTENSIONS_PATH*.jar $CATALINA_HOME/webapps/geoserver/WEB-INF/lib/ 
 
 # OGR WFS  https://docs.geoserver.org/stable/en/user/extensions/ogr.html
@@ -115,7 +123,7 @@ ARG EXT_NAME=ogr-wfs
 ARG EXT_ZIP_NAME=geoserver-$GEOSERVER_VERSION-$EXT_NAME-plugin.zip
 
 RUN curl --retry 10 -jkSL -o $EXT_ZIP_NAME https://sourceforge.net/projects/geoserver/files/GeoServer/$GEOSERVER_VERSION/extensions/$EXT_ZIP_NAME   && \
-    unzip ./$EXT_ZIP_NAME -d  $EXTENSIONS_PATH && \
+    unzip -o ./$EXT_ZIP_NAME -d  $EXTENSIONS_PATH && \
     mv $EXTENSIONS_PATH*.jar $CATALINA_HOME/webapps/geoserver/WEB-INF/lib/ 
 
 # OGR WPS https://docs.geoserver.org/stable/en/user/extensions/ogr.html#ogr-based-wps-output-format
@@ -131,7 +139,7 @@ ARG EXT_NAME=wps
 ARG EXT_ZIP_NAME=geoserver-$GEOSERVER_VERSION-$EXT_NAME-plugin.zip
 
 RUN curl --retry 10 -jkSL -o $EXT_ZIP_NAME https://sourceforge.net/projects/geoserver/files/GeoServer/$GEOSERVER_VERSION/extensions/$EXT_ZIP_NAME    &&  \
-    unzip ./$EXT_ZIP_NAME -d  $EXTENSIONS_PATH && \
+    unzip  -o ./$EXT_ZIP_NAME -d  $EXTENSIONS_PATH && \
     mv $EXTENSIONS_PATH*.jar $CATALINA_HOME/webapps/geoserver/WEB-INF/lib/ 
 
 #RUN echo https://sourceforge.net/projects/geoserver/files/GeoServer/$GEOSERVER_VERSION/extensions/$EXT_ZIP_NAME
@@ -148,6 +156,19 @@ ARG EXT_ZIP_NAME=geoserver-$GS_MINOR_VERSION-SNAPSHOT-$EXT_NAME-plugin.zip
 RUN curl --retry 10 -jkSL -o $EXT_ZIP_NAME https://build.geoserver.org/geoserver/$GS_MINOR_VERSION.x/community-latest/$EXT_ZIP_NAME  && \
     unzip -o ./$EXT_ZIP_NAME -d  $EXTENSIONS_PATH && \
     mv $EXTENSIONS_PATH*.jar $CATALINA_HOME/webapps/geoserver/WEB-INF/lib/ 
+
+
+
+# geostyler  https://docs.geoserver.org/latest/en/user/community/geostyler/index.html
+ARG EXT_NAME=geostyler
+ARG EXT_ZIP_NAME=geoserver-$GS_MINOR_VERSION-SNAPSHOT-$EXT_NAME-plugin.zip
+
+# RUN echo  https://build.geoserver.org/geoserver/$GS_MINOR_VERSION.x/community-latest/$EXT_ZIP_NAME 
+
+RUN curl --retry 10 -jkSL -o $EXT_ZIP_NAME https://build.geoserver.org/geoserver/$GS_MINOR_VERSION.x/community-latest/$EXT_ZIP_NAME  && \
+    unzip -o ./$EXT_ZIP_NAME -d  $EXTENSIONS_PATH && \
+    mv $EXTENSIONS_PATH*.jar $CATALINA_HOME/webapps/geoserver/WEB-INF/lib/ 
+
 
 ###########################################################################################################
 # JDBC Download latest to tomcat lib and delete the driver included by default in geoserver 
