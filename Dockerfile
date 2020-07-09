@@ -19,6 +19,7 @@ ENV TOMCAT_MAJOR=9 \
     MARLIN_TAG=0_9_4_3 \
     MARLIN_VERSION=0.9.4.3 \
     GEOSERVER_DATA_DIR=/opt/geoserver_data/ \
+    GEOWEBCACHE_CACHE_DIR=/opt/geoserver_gwc/ \
     GEOSERVER_LIB_DIR=$CATALINA_HOME/webapps/geoserver/WEB-INF/lib/
 
 WORKDIR /tmp
@@ -45,7 +46,9 @@ RUN curl --retry 10  -jkSL -o /tmp/geoserver.zip http://managedway.dl.sourceforg
     mkdir -p $CATALINA_HOME/webapps/geoserver && \
     unzip -q $CATALINA_HOME/webapps/geoserver.war -d $CATALINA_HOME/webapps/geoserver && \
     rm $CATALINA_HOME/webapps/geoserver.war && \
-    mkdir -p $GEOSERVER_DATA_DIR
+    mkdir -p $GEOSERVER_DATA_DIR && \
+    mkdir -p $GEOWEBCACHE_CACHE_DIR
+
 
 WORKDIR /tmp
 

@@ -95,10 +95,11 @@ Storing data on the host rather than the container:
 
     TODO
 
-Mont data directory and replace the   context.xml file  for JNDI:
+Mont data directory, gwc directory  and replace the  context.xml file  for JNDI:
 
      docker run --name my-geoserver  \
 	     -v $PWD/data:/opt/geoserver_data/  \
+         -v $PWD/gwc:/opt/geoserver_gwc/  \
          -v $PWD/tomcat/conf/dev/context.xml:/opt/tomcat/conf/context.xml  \
 	     -p 18080:8080  -d dersteppen/docker-geoserver:2.17.1_tomcat_9.0.37_v1.0.0
 
@@ -116,7 +117,7 @@ Build:
 ```bash
 docker build -t dersteppen/docker-geoserver .
 docker images dersteppen/docker-geoserver
-docker tag 2cd93cf9f703 dersteppen/docker-geoserver:2.17.1_tomcat_9.0.37_v1.0.0
+docker tag e3828ac7b60d dersteppen/docker-geoserver:2.17.1_tomcat_9.0.37_v1.0.0
 ```
 
 Push image to dockerhub:
