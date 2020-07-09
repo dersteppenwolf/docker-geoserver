@@ -95,7 +95,7 @@ Storing data on the host rather than the container:
 
     TODO
 
-Mont data directory, gwc directory  and replace the  context.xml file  for JNDI:
+Mount data directory, gwc directory  and replace the  context.xml file  for JNDI:
 
      docker run --name my-geoserver  \
 	     -v $PWD/data:/opt/geoserver_data/  \
