@@ -3,9 +3,9 @@ LABEL maintainer="juan@gkudos.com"
 
 ###########################################################################################################
 ARG GS_MINOR_VERSION=2.17
-ARG GS_VERSION=2.17.1
-ARG PG_JDBC_JAR_NAME=postgresql-42.2.14.jar
-ARG OLD_PG_JDBC_JAR_NAME=postgresql-42.2.5.jar
+ARG GS_VERSION=2.17.2
+ARG PG_JDBC_JAR_NAME=postgresql-42.2.16.jar
+ARG OLD_PG_JDBC_JAR_NAME=postgresql-42.2.14.jar
 ARG GITLAB_GEOSERVER_DATA=./build/geoserver_data
 
 # Environment variables Database JNDI Config 
@@ -13,7 +13,7 @@ ENV  DB_ENVIRONMENT=dev
 
 # Environment variables tomcat
 ENV TOMCAT_MAJOR=9 \
-    TOMCAT_VERSION=9.0.37 \
+    TOMCAT_VERSION=9.0.38 \
     CATALINA_HOME=/opt/tomcat \
     GEOSERVER_VERSION=$GS_VERSION \
     MARLIN_TAG=0_9_4_3 \
